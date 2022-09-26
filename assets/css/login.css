@@ -1,0 +1,42 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background: url('/assets/images/login_bg.jpg') no-repeat center;
+  background-size: cover;
+}
+
+.login-reg-box {
+  width: 400px;
+  height: 270px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  background-color: #fff;
+}
+
+.login-reg-box .title {
+  text-align: center;
+  line-height: 60px;
+}
+
+.reg-box {
+  display: none;
+}
+
+.layui-form {
+  padding: 0 30px;
+}
+
+/* .links {
+  display: flex;
+  justify-content: flex-end;
+} */
+
+.links a {
+  font-size: 12px;
+  color: #1890ff;
+}
