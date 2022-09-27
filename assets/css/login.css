@@ -10,7 +10,7 @@ body {
 
 .login-reg-box {
   width: 400px;
-  height: 270px;
+  height: 310px;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -27,16 +27,30 @@ body {
   display: none;
 }
 
-.layui-form {
+.login-reg-box {
   padding: 0 30px;
 }
 
-/* .links {
+.links {
   display: flex;
-  justify-content: flex-end;
-} */
+  justify-content: flex-start;
+}
 
 .links a {
   font-size: 12px;
   color: #1890ff;
+}
+
+.layui-form-item {
+  position: relative;
+}
+
+.layui-form-item .layui-icon {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
+.layui-input {
+  padding-left: 32px;
 }
