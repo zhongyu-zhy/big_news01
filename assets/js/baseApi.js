@@ -16,5 +16,5 @@ $.ajaxPrefilter(function(config){
   config.contentType = 'application/json'
 
   //统一设置请求的参数-post请求
-  config.data = format2Json(config.data)
+  config.data = config.data && format2Json(config.data)
 })
