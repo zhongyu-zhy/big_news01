@@ -39,9 +39,9 @@ function getUserinfo() {
 getUserinfo()
 
 const render = (res) => {
-  if (res.user_pic) {
+  if (res.data.user_pic) {
     $('.text-avatar').hide()
-    $('.userinfo img').css('src', res.user_pic).show()
+    $('.userinfo img').attr('src', res.data.user_pic).show()
   } else {
     $('.layui-nav-img').hide()
     const name = res.data.nickname || res.data.username
