@@ -16,7 +16,7 @@ $(function(){
       method:'GET',
       url:'/my/userinfo',
       success(res){
-        if(res.code !== 0) return layer.msg('请求用户信息失败')
+        if(res.status !== 0) return layer.msg('请求用户信息失败')
         console.log(res)
         //调用form.val()快速赋值
         form.val('formInfo',res.data)
@@ -36,11 +36,11 @@ $(function(){
     e.preventDefault()
 
     $.ajax({
-      method:'PUT',
+      method:'POST',
       url:'/my/userinfo',
       data: form.val('formInfo'),
       success(res){
-        if(res.code !==0) return layer.msg('更新用户信息失败')       
+        if(res.status !==0) return layer.msg('更新用户信息失败')       
         // console.log(res)
         window.parent.getUserinfo()
         layer.msg('更新用户信息成功！')

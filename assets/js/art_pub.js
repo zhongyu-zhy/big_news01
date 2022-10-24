@@ -8,13 +8,14 @@ $(function () {
   function initArtCateList() {
     $.ajax({
       method: 'GET',
-      url: 'http://big-event-vue-api-t.itheima.net/my/cate/list',
+      // url: 'http://big-event-vue-api-t.itheima.net/my/cate/list',
+      url:'http://127.0.0.1:3007/my/article/cates',
       headers:{
         Authorization:localStorage.getItem('big_news_token')
       },
       success(res) {
         console.log(res)
-        if (res.code !== 0) return layer.msg('获取分类失败')
+        if (res.status !== 0) return layer.msg('获取分类失败')
         // layer.msg('获取分类成功')
         const html = template('tpl-cate', res)
         $('[name=cate_id]').html(html)
@@ -85,7 +86,8 @@ $(function () {
  function pubArt(fd){
   $.ajax({
     method:'POST',
-    url:'http://big-event-vue-api-t.itheima.net/my/article/add',
+    // url:'http://big-event-vue-api-t.itheima.net/my/article/add',
+    url:'http://127.0.0.1:3007/my/article/add',
     data:fd,
     // 注意：如果向服务器提交的是 FormData 格式的数据，
     //必须添加以下两个配置项
@@ -95,7 +97,7 @@ $(function () {
       Authorization:localStorage.getItem('big_news_token')
     },
     success(res){
-      if(res.code !==0) return layer.msg('发布文章失败')
+      if(res.status !==0) return layer.msg('发布文章失败')
       layer.msg('发布文章成功')
       location.href = '/cate/art_list.html'
     }

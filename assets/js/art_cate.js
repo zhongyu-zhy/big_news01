@@ -4,10 +4,10 @@ let form = layui.form
   function initArtCateList(){
     $.ajax({
       method:'GET',
-      url:'/my/cate/list',
+      url:'/my/article/cates',
       success(res){
         console.log(res)
-        if(res.code !== 0) return layer.msg('获取分类失败')
+        if(res.status !== 0) return layer.msg('获取分类失败')
         // layer.msg('获取分类成功')
         const htmlStr = template('tpl-cate',res)
         $('tbody').html(htmlStr)
@@ -35,11 +35,11 @@ let form = layui.form
 
     if(isEdit){
       $.ajax({
-        method:'PUT',
-        url:'/my/cate/info',
+        method:'POST',
+        url:'/my/article/updatecate',
         data:$(this).serialize(),
         success(res){
-          if(res.code !==0) return layer.msg('修改类别失败')
+          if(res.status !==0) return layer.msg('修改类别失败')
           layer.msg('修改类别成功')
           initArtCateList()
         }
@@ -47,10 +47,10 @@ let form = layui.form
     }else {
       $.ajax({
         method:'POST',
-        url:'/my/cate/add',
+        url:'/my/article/addcates',
         data:$(this).serialize(),
         success(res){
-          if(res.code !== 0) return layer.msg('添加类别失败')
+          if(res.status !== 0) return layer.msg('添加类别失败')
          
           layer.msg('添加成功')       
           initArtCateList()
@@ -76,9 +76,9 @@ let form = layui.form
     let id = $(this).attr('data-id')
     $.ajax({
       method:'GET',
-      url:`/my/cate/info?id=${id}`,
+      url:`/my/article/cates/${id}`,
       success(res){
-       if(res.code !==0) return layer.msg('获取分类详情失败')
+       if(res.status !==0) return layer.msg('获取分类详情失败')
         form.val('form-add',res.data)
       }
     })
@@ -89,10 +89,10 @@ let form = layui.form
     let id = $(this).attr('data-id')
     if(result){
       $.ajax({
-        method:'DELETE',
-        url:`/my/cate/del?id=${id}`,
+        method:'GET',
+        url:`/my/article/deletecate/${id}`,
         success(res){
-          if(res.code !== 0) return layer.msg('删除失败')
+          if(res.status !== 0) return layer.msg('删除失败')
           layer.msg('删除成功')
           initArtCateList()
         }

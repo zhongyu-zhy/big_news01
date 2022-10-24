@@ -34,7 +34,7 @@ $(function () {
     e.preventDefault()
     $.ajax({
       method:'POST',
-      url:'/api/reg',
+      url:'/api/reguser',
       // contentType:'application/json',
       /* data:JSON.stringify({
         username:$('#form_reg [name=username]').val(),
@@ -43,7 +43,7 @@ $(function () {
       }), */
       data:$(this).serialize(),
       success(res){
-        if(res.code !== 0) return layer.msg(res.message)
+        if(res.status !== 0) return layer.msg(res.message)
         layer.msg('注册成功')
         $('#link_login').trigger('click')
       }
@@ -60,7 +60,7 @@ $(function () {
       // contentType:'application/json',
       data:$(this).serialize(),
       success(res){
-        if(res.code !==0) return layer.msg(res.message)
+        if(res.status !==0) return layer.msg(res.message)
 
         localStorage.setItem('big_news_token',res.token)
 

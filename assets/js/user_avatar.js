@@ -43,11 +43,11 @@ $(function () {
       })
       .toDataURL('image/png')       // 将 Canvas 画布上的内容，转为 base64 格式的字符串
     $.ajax({
-      method:'PATCH',
+      method:'POST',
       url:'/my/update/avatar',
       data:{avatar:dataURL},
       success(res){
-        if(res.code !==0) return layer.msg('上传头像失败')
+        if(res.status !==0) return layer.msg('上传头像失败')
         layer.msg('上传头像成功')
         window.parent.getUserinfo()
       }

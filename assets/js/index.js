@@ -21,7 +21,7 @@ function getUserinfo() {
     },
     success(res) {
       console.log(res)
-      if (res.code !== 0) return layer.msg(res.message)
+      if (res.status !== 0) return layer.msg(res.message)
       /* if(res.user_pic){
         $('.text-avatar').hide()
         $('.userinfo img').css('src',res.user_pic)
